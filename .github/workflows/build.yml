@@ -23,8 +23,7 @@ jobs:
       env:
         CI: true
     - name: Publish
-      if: github.ref == 'refs/heads/master'
-      if: matrix.node-version == 12.x
+      if: github.ref == 'refs/heads/master' && matrix.node-version == 12.x
       run: |
         # npm install --ignore-scripts
         npm publish
