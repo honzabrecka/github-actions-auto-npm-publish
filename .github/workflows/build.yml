@@ -26,7 +26,8 @@ jobs:
       if: github.ref == 'refs/heads/master' && matrix.node-version == '12.x'
       run: |
         # npm install --ignore-scripts
-        npm publish
+        npm publish 2>&1 | tee npm-publish-output
+        ! grep "You cannot publish over the previously published versions:" npm-publish-output
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         CI: true
