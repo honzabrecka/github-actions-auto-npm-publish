@@ -27,7 +27,7 @@ jobs:
       run: |
         # npm install --ignore-scripts
         npm publish 2>&1 | tee npm-publish-output
-        grep "You cannot publish over the previously published versions:" npm-publish-output || echo "already published"
+        grep "You cannot publish over the previously published versions:" npm-publish-output || true
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         CI: true
